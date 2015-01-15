@@ -1,0 +1,1027 @@
+\documentclass[11pt]{article}
+\usepackage[english]{babel}
+\usepackage{amsmath,amsfonts,amsthm,amssymb,bm}
+%\usepackage{longtable}
+\usepackage[applemac]{inputenc}
+\usepackage{textcomp}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{todonotes}
+\usepackage{menukeys}
+\usepackage{pdflscape}
+\DeclareMathOperator{\var}{var}
+\DeclareMathOperator{\cov}{cov}
+
+\usepackage{hyperref}
+\hypersetup{
+  letterpaper,
+  bookmarksnumbered,
+  bookmarksopen,
+  bookmarksopenlevel=0,
+  colorlinks,
+% for colors, check package xcolor
+%   anchorcolor=anchorcolor,
+    citecolor=blue,
+%   linkcolor=linkcolor,
+	pdfauthor={Rodrigo Azuero Melo},
+	pdftitle={ECON 792 Problem Set 1},
+	pdfsubject={},
+	pdfkeywords={},
+%   plainpages=false,
+%   urlcolor=urlcolor
+}
+\usepackage{comment}
+\usepackage{apacite}
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage{threeparttable}
+\usepackage{bbm}
+\usepackage{caption}
+\usepackage{float}
+%\usepackage{keyval}
+\usepackage{enumerate}
+%\usepackage{floatrow}
+%\usepackage[captionskip=-2pt]{subfig}
+%\usepackage{subfig}
+\usepackage[letterpaper,centering]{geometry}
+\usepackage{setspace}
+\usepackage{amsmath}
+
+
+\onehalfspacing
+
+%\usepackage[thmmarks, thref, hyperref]{ntheorem}
+%%\usepackage[thmmarks, thref, hyperref]{ntheorem}
+%
+%\theoremsymbol{\ensuremath{_\Box}}
+%\newtheorem{definition}{Definition}[section]
+%\newtheorem{example}{Example}[section]
+%\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{lemma}{Lemma}[section]
+%\newtheorem{proposition}{Proposition}[section]
+%\newtheorem{corollary}{Corollary}[section]
+%\newtheorem{problem}{Problem}[section]
+%\newtheorem{axiom}{Axiom}[section]
+%\newtheorem{remark}{Remark}[section]
+%
+%\theoremsymbol{\ensuremath{_\blacksquare}}
+%\theorembodyfont{\normalfont}
+%\newtheorem*{proof}{Proof}
+%\newtheorem*{claim}{Claim}
+%
+
+
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{ifthen}
+\usepackage{listings}
+\usepackage{courier}
+
+\definecolor{light-gray}{gray}{0.90}
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0}
+
+% For faster processing, load Matlab syntax for listings
+\lstloadlanguages{Matlab}%
+\lstset{language=Matlab,
+        frame=single,
+        basicstyle=\small\ttfamily,
+        keywordstyle=[1]\color{Blue}\bf,
+        keywordstyle=[2]\color{Purple},
+        keywordstyle=[3]\color{Blue}\underbar,
+        identifierstyle=,
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small,
+        stringstyle=\color{Purple},
+        showstringspaces=false,
+        tabsize=5,
+        % Put standard MATLAB functions not included in the default
+        % language here
+        morekeywords={xlim,ylim,var,alpha,factorial,poissrnd,normpdf,normcdf},
+        % Put MATLAB function parameters here
+        morekeywords=[2]{on, off, interp},
+        % Put user defined functions here
+        morekeywords=[3]{FindESS},
+        morecomment=[l][\color{Blue}]{...},
+        numbers=left,
+        firstnumber=1,
+        numberstyle=\tiny\color{Blue},
+        stepnumber=5
+        }
+
+%\lstloadlanguages{R}
+%\lstdefinelanguage{Renhanced}[]{R}{%
+%  morekeywords={acf,ar,arima,arima.sim,colMeans,colSums,is.na,is.null,%
+%    mapply,ms,na.rm,nlmin,replicate,row.names,rowMeans,rowSums,seasonal,%
+%    sys.time,system.time,ts.plot,which.max,which.min,ts,subset,in,header,select,ylab,slab,act,pact,%
+%    main,line,side,spec.pgram,spec.ar,taper,lty,mfrow,lag.max},
+%  deletekeywords={c,data},
+%  morekeywords=[2]{TRUE, FALSE},
+%  alsoletter={.\%},%
+%  alsoother={:_\$}}
+%\lstset{language=Renhanced,extendedchars=true,
+%  basicstyle=\small\ttfamily,
+%  commentstyle=\color{MyDarkGreen}\textsl,
+%  keywordstyle=[1]\mdseries\color{Blue},
+%  keywordstyle=[2]\mdseries\color{Violet},
+%  identifierstyle=,
+%  showstringspaces=false,
+%  index=[1][keywords], 
+%  indexstyle=\indexfonction}
+
+\newcommand{\indexfonction}[1]{\index{#1@\texttt{#1}}}
+
+\usepackage{subfig}
+
+\renewcommand{\thesubfigure}{\thefigure.\arabic{subfigure}}
+\captionsetup[subfigure]{labelformat=simple,labelsep=colon,
+listofformat=subsimple}
+\captionsetup{lofdepth=2}
+\makeatletter
+\renewcommand{\p@subfigure}{}
+\makeatother
+\setlength\parindent{10pt}
+
+\renewcommand{\thesubtable}{\thetable.\arabic{subtable}}
+\captionsetup[subtable]{labelformat=simple,labelsep=colon,
+listofformat=subsimple}
+\captionsetup{lotdepth=2}
+\makeatletter
+\renewcommand{\p@subtable}{}
+\makeatother
+\captionsetup[subfigure]{position=bottom}
+
+%\def\sf@ifpositiontop{%
+%\ifx\caption@position\@firstoftwo \let\next\@firstoftwo \else
+%\let\next\@secondoftwo \fi \next}
+
+\graphicspath{{Figures/}}
+\title{\vspace{-3cm}ECON 721: Problem Set 3\\Dynamic Labor Supply}
+\author{Rodrigo Azuero}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Estimation}
+
+The objective of the household is to choose an optimal sequence of consumption and labor supply decisions in order to maximize the present value discounted utility. The consumption and labor supply decision have to satisfy a budget constraint in every period such that the total consumption should be no greater than husband's and labor income. Note that I am not allowing for savings in the model as we don't have data on this variable. Then, we can write the problem of the household as:
+
+\begin{align}\label{eq:problem}
+	& \max_{\{c_t,h_t\}_{t=1}^T}\mathbb{E}_0\sum_{t=1}^T \beta^tU(c_t,h_t) \nonumber \\[0.2in]
+	& s.t. \nonumber \\[0.2in]
+	& c_t \leq w^*_t h_t + y_t-0.5(w^*_th_t-30,000)\mathbbm{1}\{w^*_th_t\geq 30,000 \}  \nonumber\, \,  \forall t \\
+	& c_t; h_t \geq0 \, \, \forall t
+\end{align}
+
+where $c_t$ denotes consumption in period $t$; $h_t$ is a dummy variable taking the value of 1 if the woman works in period $t$ and zero otherwise; $w^*_t$ is the wage rate in $t$; $\beta$ is the discount factor and the expectations are taking at period 0 and $\mathbbm{1\{ .\}}$ is the indicator function. $T$ is the last period which corresponds to 15 in this case. Now, as specified, wages follow log-normal distribution conditional on years of schooling $s$, experience $a$ and on being black $b$. The wage equation for individual $i$ in period $t$ is:
+\begin{align}\label{eq:wages}
+	\ln w^*_{t}=\gamma_0+\gamma_1s_{t}+\gamma_2a_{t}+\gamma_3a_{t}^2+\gamma_4b+\xi_t
+\end{align}
+
+Experience evolves according to the following equation:
+\begin{align}
+	a_{t+1}=a_{t}+h_t
+\end{align}
+ In addition, wages are observed with measurement error in a multiplicative way. Say observed wages are $w$ then:
+
+\begin{align}
+	\ln w_t=\ln w^*_t +\theta_t
+\end{align}
+
+The joint distribution of the error terms is given by :
+
+\begin{align}
+	\begin{pmatrix}
+	\theta \\
+	\xi
+	\end{pmatrix}
+	 \sim N\left(0,\begin{bmatrix}    
+	 \sigma_\theta^2 & \rho\sigma_\theta\sigma_{\xi} \\
+	  \rho\sigma_\theta\sigma_{\xi}  & \sigma_{\xi}^2
+	 \end{bmatrix}
+	 \right)
+ \end{align} Now, we are told that the utility function should be similar to the one in class. Then, I assume the following functional form (linear) and I will subsequently modify the utility function if consider it necessary:
+
+\begin{align}
+	U(c_t,h_t)=c_t+\left[ \alpha_0+\alpha_1c_t\right](1-h_t)
+\end{align}
+
+The set of parameters in the model is $\Theta=\{\sigma_\theta, \sigma_\xi, \gamma_0,\gamma_1,\gamma_2,\gamma_3,\alpha_0,\alpha_1,\rho\}$. In total there are 9 parameters to be estimated. I am not using a subindex $i$ for individual as all these functions will be generic for everyone. I will use the subindex $i$ to denote individuals in order to identify the likelihood function. The state space in period $t$ for an individual is defined as $\Omega_t=\{s_t,a_{t-1},y_t,t,\eta_t  \}$. The observed state space is $\Omega_t^-= \{  s_t,a_{t-1},y_t ,t\}$. At time $t$ the maximum expected present discounted value of remaining lifetime utility is given by:
+
+\begin{align}\label{eq:v1}
+	V_t(\Omega_t)=\max_{ \{c_\tau,h_\tau\}_{\tau=t}^T } \mathbb{E}\{ \sum_{\tau=t}^T \beta^{\tau-t}U(c_\tau,h_\tau) \}
+\end{align}
+
+The expectations are taken with respect to the sequence of error terms $\xi$. This maximization is subject to the budget constraint in every period. We can define the flow utility in each period of working and non-working as follows:
+\begin{footnotesize}
+\begin{align}\label{eq:us}
+	& U_t^1  =y_t+exp(\gamma_0+\gamma_1s_{t}+\gamma_2a_{t}+\gamma_3a_{t}^2+\gamma_4b+\xi_t) \nonumber \\[0.2in]
+	& - 0.5(exp(\gamma_0+\gamma_1s_{t}+\gamma_2a_{t}+\gamma_3a_{t}^2+\gamma_4b+\xi_t)-30,000)\mathbbm{1}\{exp(\gamma_0+\gamma_1s_{t}+\gamma_2a_{t}+\gamma_3a_{t}^2+\gamma_4b+\xi)\geq 30,000 \})\nonumber \\[0.2in]
+	& U_t^0  =y_t(1+\alpha_1)+\alpha_0
+\end{align}
+\end{footnotesize}
+
+Then, we can rewrite \ref{eq:v1} as:
+
+\begin{align}
+	V_t(\Omega_t)=\max_{ \{P_\tau\}_{\tau=t}^T } \mathbb{E}\{ \sum_{\tau=t}^T \beta^{\tau-t}\left[ P_\tau U_\tau^1+(1-P_\tau)U_\tau^0\right] \}
+\end{align}
+
+Or alternatively, we can write it as the maximum over two value functions:
+
+\begin{align}
+	V_t(\Omega_t)=\max\{V_t^1(\Omega_t),V_t^0(\Omega_t) \}
+\end{align}
+
+where
+\begin{align}
+	& V_t^k(\Omega_t)= \mathbb{E}\left[ U_t^k|\Omega_{t} \right]+\delta  \mathbb{E}\left[ V_{t+1}(\Omega_{t+1})|\Omega_t,P_t=k \right] \text{ for } t<T\nonumber \\[0.2in]
+	 & V_t^k(\Omega_t)= \mathbb{E}\left[ U_t^k|\Omega_{t} \right]\text{for }t=T
+\end{align}
+
+for k=0,1. This problem can be solved by backwards induction as the last period lacks any dynamic decision. The dynamics of the model are due to the fact that labor supply decision will have an impact on future earnings. 
+
+\subsection{Decision rule in the last period}
+
+For this case I will take three different cases. 1. when individual decides not to work; 2. when they decide to work and labor income is not taxed; and 3. when works and labor income is taxed. 
+
+For the first case, it should be the case that $U_T^1<U_T^0$. The reservation wage depends on the labor income of husband and thus we have two cases for the reservation wage:
+\\
+\textbf{Option 1:} $y_T(1+\alpha_1)+\alpha_0<30,000+y_T\rightarrow y_T\alpha_1+\alpha_0<30,000$
+
+\begin{align}\label{eq:rule1}
+	& y_T+exp(\gamma_0+\gamma_1s_{T}+\gamma_2a_{T}+\gamma_3a_{T}^2+\gamma_4b+\xi_T) < \nonumber \\& y_T(1+\alpha_1)+\alpha_0
+\end{align}
+
+which implies that:
+
+\begin{align}\label{eq:nwork}
+	\xi_T<\ln(\alpha_1y_T+\alpha_0)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b=\xi_T^{R}(\Omega_T^-)
+\end{align}
+
+where $\xi_T^R(.)$ denotes the reservation level for the shock $\xi_T$ to work in period $T$. 
+\\
+\textbf{Option 2}:  $y_T(1+\alpha_1)+\alpha_0\geq 30,000+w_T$
+I do have to consider an additional case. What will happen if the reservation wage is higher than 30,000? The wage being offered will be taxed. Then, it will be the case that he will not work whenever:
+
+
+\begin{align}
+	y_T+w_T-0.5(w_T-30,000)<y_T(1+\alpha_1)+\alpha_0
+\end{align}
+
+which implies that this will happen whenever:
+
+\begin{align}
+	\xi_T<\ln\left( 2(\alpha_1y_T+\alpha_0-15,000)\right)-\gamma_0-\gamma_1s_T-\gamma_2a_{T-1}-\gamma_3a_{T-1}^2-\gamma_4b=\xi_T^R(\Omega_T^-)
+\end{align}
+
+Then we can see that the reservation shock will depend on husbands income and parameters. Thus:
+
+\begin{align}
+	\xi_T^R=\begin{cases}
+		\ln(\alpha_1y_T+\alpha_0)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b  \text{;  if  } y_T\alpha_1+\alpha_0<30,000 \\
+		\ln\left( 2(\alpha_1y_T+\alpha_0-15,000)\right)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b \text{;   otherwise}
+	\end{cases}
+\end{align}
+
+Now, the second case occurs when the individual decides to work and the labor income is not taxed. Then, it should be the case that:
+
+\begin{align}
+	(1+\alpha_1)y_T+\alpha_0\leq w_T\leq 30,000
+\end{align}
+
+which translates into the following bounds for the $\xi_T$ shock:
+
+\begin{align}\label{eq:wtax}
+	\xi_R(\Omega_T^-)\leq\xi_T\leq\xi_T^{Tax}(\Omega_T^-)
+\end{align}
+
+where $\xi_T^{Tax}(.)$ is the threshold level beyond which the labor income tax will be taxed. It is:
+
+\begin{align}\label{eq:xitax}
+	\xi_T^{Tax}(\Omega_T^-)=\ln(30,000)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b
+\end{align}
+
+
+Finally, the third case occurs when the wife decides to work and the labor income is being taxed:
+
+\begin{align}
+	w_T>\max\{30,000,\alpha_1y+\alpha_0\}
+\end{align}
+
+
+which implies the following bound for the $\xi$ shock:
+
+\begin{align}\label{eq:work tax}
+	\xi_T>\ln\left[ \max\{30,000,\alpha_1y_T+\alpha_0\} \right]-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2
+-\gamma_4b=\xi_T^{Max}
+\end{align}
+
+
+
+\subsection{Emax in last period}
+
+Having estimated the decision rule the last period we can estimate the Emax function at period T. This takes the form:
+
+\begin{align}
+	& \mathbb{E}_{T-1}\left(V(\Omega_T^-) \right)=\mathbb{E}_{T-1}\left[U_T^{0}| \xi<\xi_T^R(\Omega_T^-) \right]P(\xi_T<\xi_T^R(\Omega_T^-) )+\nonumber \\[0.2in]
+	& \mathbb{E}_{T-1}\left[U_T^{1,N}| \xi_T^R(\Omega_T^-\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \right]P(\xi_T^R(\Omega_T^-)\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \mathbbm{1}\{\xi_T^R(\Omega_T^-)\leq\xi_T^{Tax}(\Omega_T^-)\}+\nonumber \\[0.2in]
+	& \mathbb{E}_{T-1}\left[U_T^{1,T}| \xi_T>\xi_T^{Max}(\Omega_T^-) \right]P(\xi_T>\xi_T^{Max}(\Omega_T^-))
+\end{align}
+
+$U^{1,T}$ and $U^{1,N}$ denote utility from working with labor income being taxed and not being taxed respectively. I include the indicator function in the second term as whenever the reservation wage is higher than $30,000$ it will never be the case that the individual will work without paying taxes. Analyzing term, by term:
+
+\begin{align}
+	\mathbb{E}_{T-1}\left[U_T^{0}| \xi<\xi_T^R(\Omega_T^-) \right]=y_T(1+\alpha_1)+\alpha_0
+\end{align}
+
+\begin{align}
+	P(\xi<\xi_T^R(\Omega_T^-) )=\Phi(\frac{\xi_T^R(\Omega_T^-)}{\sigma_\xi})
+\end{align}
+Using the expression for truncated log-normal expectations in the lecture notes:
+
+\begin{align}
+	& \mathbb{E}_{T-1}\left[U_T^{1,N}| \xi_T^R(\Omega_T^-\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \right]=\nonumber\\[0.2in]
+	& y_T+X_T\exp\{\frac{\sigma_\xi^2}{2}\}\left[ \frac{\Phi\left(\sigma_{\xi}-\frac{\xi_T^R(\Omega_T^-)}{\sigma_\xi}\right)-\Phi\left(\sigma_{\xi}-\frac{\xi_T^{Tax}(\Omega_T^-)}{\sigma_\xi}\right)}{\Phi\left(\frac{\xi_T^{Tax}(\Omega_T^-)}{\sigma_\xi}\right)-\Phi\left(\frac{\xi_T^{R}(\Omega_T^-)}{\sigma_\xi}\right)}\right]
+\end{align}
+
+with \begin{align}
+	X_T=\exp\{\gamma_0+\gamma_1s_T+\gamma_2a_{T}+\gamma_3a_{T}^2+\gamma_4b\}
+\end{align}
+
+\begin{align}
+	P(\xi_T^R(\Omega_T^-)\leq\xi_T\leq\xi_T^{Tax}(\Omega_T^-))=\Phi\left(\frac{\xi_T^{Tax}(\Omega_T^-)}{\sigma_\xi} \right)-\Phi\left(\frac{\xi_T^{R}(\Omega_T^-)}{\sigma_\xi} \right)
+\end{align}
+
+\begin{align}
+ 	& \mathbb{E}_{T-1}\left[U_T^{1,T}| \xi_T>\xi_T^{Max}(\Omega_T^-) \right]=\nonumber \\[0.2in]
+	& y_T+0.5X_T\exp\{\frac{\sigma_\xi^2}{2}\}\left[\frac{\Phi\left(\sigma_\xi-\frac{\xi_T^{Max}}{\sigma_\xi}\right)}{1-\Phi\left( \frac{\xi_T^{Max(\Omega_T^-)}}{\sigma_\xi} \right) } \right]+15,000
+\end{align}
+
+
+And finally:
+
+\begin{align}
+	P\left(\xi_T\geq \xi_T^{Max}(\Omega_T^-) \right)=1-\Phi\left(\frac{\xi_T^{Max}(\Omega_T^-)}{\sigma_\xi} \right)
+\end{align}
+
+With these equations we have the information to compute Emax in period T. 
+
+\subsection{Value functions in T-1}
+
+Let's first consider the case of period $T-1$. In this case, using the notation previously defined, we get the value function if work:
+
+\begin{align}
+	& V_{T-1}^1(\Omega_{T-1})=y_{T-1}+w_{T-1}-0.5(w_{T-1}-30,000)\mathbbm{1}\{w_{T-1}>30,000\}+\nonumber \\[0.2in]
+	& \beta \mathbbm{E}_{T-1}V_T(\Omega_T|\Omega_{T-1},a_{T}=a_{T-1}+1)
+\end{align}
+
+and the value function if doesn't work:
+
+\begin{align}
+	V_{T-1}^0(\Omega_{T-1})=y_{T-1}(1+\alpha_1)+\alpha_0+\beta \mathbbm{E}_{T-1}V_T(\Omega_T|\Omega_{T-1},a_{T}=a_{T-1})
+\end{align}
+
+where the last terms come from the Emax functions of the last period estimated in the previous section. 
+\subsection{Decision rule at T-1}
+
+If the individual finds it optimal not to work it should be the case that:
+\begin{align}
+	 & V_{T-1}^1(\Omega_{T-1})\geq V_{T-1}^0(\Omega_{T-1}) \nonumber \\[0.2in]
+	 & y_{T-1}+w_T-0.5(w_T-30,000)\mathbbm{1}\{w>30,000\}+\beta \mathbbm{E}_{T-1}V_T(\Omega_T|\Omega_{T-1},a_{T}=a_{T-1}+1) \geq \nonumber \\[0.2in]
+	& y_{T-1}(1+\alpha_1)+\alpha_0+\beta \mathbbm{E}_{T-1}V_T(\Omega_T|\Omega_{T-1},a_{T}=a_{T-1})
+\end{align}
+
+Then, we have two cases whenever the individual decides not to work: when the reservation wage is below the taxed region and when it is above. 
+\\
+\textbf{Reservation wage not taxed}
+
+We know that the reservation wage is a wage level $w_{T-1}^R$ such that:
+
+\begin{align}
+	y_{T-1}(1+\alpha_1)+\alpha_0+\beta \text{Emax}(\Omega_T^-|P_{T-1}=0)_T^0=y_{T-1}+w_{T-1}^R+\beta \text{Emax}_{T}^1(\Omega_T^-|P_{T-1}=1)
+\end{align}
+where for simplicity I will now use (1) or (0) on the Emax function representing wether the person works or doesn't work in current period respectively. We know how to properly estimate this as it is simply Emax functions in period T which were solved previously. Now, solving for $w_{T-1}^R$ we find that:
+
+\begin{align}
+	w_{T-1}^R=\alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_{T}^0-\text{Emax}_{T}^1)
+\end{align}
+and it will never be taxed as long as it is smaller than 30,000. Then, the woman will not go to work whenever 
+
+\begin{align}\label{eq:dec1}
+	\xi_{T-1}\leq\ln \left(\alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_T^0-\text{Emax}_T^1)-\gamma_0-\gamma_1s_{T}-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b \right)
+\end{align}
+
+and thus combining \ref{eq:rule1} and \ref{eq:dec1} we get the first part of the reservation wage. \\
+\textbf{Reservation wage taxed}
+Now, when the reservation wage is so high that it is always taxed, $w_{T-1}^R$ is such that:
+
+\begin{align}
+	y_{T-1}+\alpha_0+\beta\text{Emax}_T^0=y_T+w_{T-1}^R+\beta \text{Emax}_{T}-0.5(w_{T-1}^R-30,000)
+\end{align}
+
+Solving for $w_{T-1}^R$:
+
+\begin{align}\label{eq:rule2}
+	w_{T-1}^R=2\left(\alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_T^0-\text{Emax}_T^1)-15,000 \right)
+\end{align}
+
+the woman will decide not to work whenever the wage shock is such that 
+\begin{align}\label{eq:dec2}
+	\xi_{T-1}< ln\left[2(\alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_T^0-\text{Emax}_T^1)-15,000)\right]-\gamma_0-\gamma_1s_{T-1}-\gamma_2a_{T-1}-\gamma_3a_{T-1}^2-\gamma_4b
+\end{align}
+
+and then, the reservation wage shock is given by the following piecewise function:
+\begin{footnotesize}
+\begin{align}
+	\xi_{T-1}^R=\begin{cases}
+		\ln \left(\alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_T^0-\text{Emax}_T^1)-\gamma_0-\gamma_1s_{T-1}-\gamma_2a_{T-1}-\gamma_3a_{T-1}^2-\gamma_4b \right);  \nonumber \\ \text{if  } \alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_{T}^0-\text{Emax}_{T}^1)<30,000 \\[0.3in]
+		 ln\left[2(\alpha_1y_{T-1}+\alpha_0+\beta(\text{Emax}_T^0-\text{Emax}_T^1)-15,000)\right]-\gamma_0-\gamma_1s_{T-1}-\gamma_2a_{T-1}-\gamma_3a_{T-1}^2-\gamma_4b; \nonumber \\ \text{otherwise}
+	\end{cases}
+\end{align}
+\end{footnotesize}
+
+Now, an additional case occurs when individual decides to work and labor income is not taxed. This happens whenever
+
+\begin{align}
+	y_{T-1}(1+\alpha_1)+\alpha_0+\beta\text{Emax}_T^0<y_{T-1}+w_{T-1}+\beta\text{Emax}_{T}^1
+\end{align}
+
+together with $w_{T-1}$ being smaller than 30,000. Then, imposing these bounds on the wage shock $\xi_{T-1}$ we get:
+
+
+\begin{align}
+	& \ln \left[y_{T-1}\alpha_1+\alpha_0+\beta(\text{Emax}_T^0-\text{Emax}_T^1) \right]-\gamma_0-\gamma_1s_{T-1}-\gamma_2a_{T-1}-\gamma_3a_{T-1}^2-\gamma_4b  \nonumber \\[0.2in]
+	& <\xi_{T-1} <\nonumber \\[0.2in]
+	& \ln(30,000)-\gamma_0-\gamma_1s_{T-1}-\gamma_2a_{T-1}-\gamma_3a_{T-1}^2-\gamma_4b
+\end{align}
+
+I will call these bounds $\xi_{T-1}^R$ and $\xi_{T-1}^{Tax}$:
+
+\begin{align}
+	\xi_{T-1}^R<\xi_{T-1}<\xi_{T-1}^{Tax}
+\end{align}
+
+The final case occurs when the individual decides to work and the wage is being taxed. This happens when:
+
+\begin{align}
+	y_{T-1}(1+\alpha_1)+\alpha_0+\beta \text{Emax}_T^0<y_{T-1}+w_{T-1}-0.5(w_{T-1}-30,000)+\beta \text{Emax}_T^1
+\end{align}
+
+and also when $w_{T-1}>30,000$. Then, imposing both bounds on the wage shock $\xi_{T-1}$ this happens whenever:
+\begin{footnotesize}
+\begin{align}
+	\xi_{T-1}>\max \{\ln(30,000),2 (y_{T-1}\alpha_1+\alpha_0+\beta(\text{Emax}_{T}^0-\text{Emax}_T^1))  \}-\gamma_0-\gamma_1s_{T-1}-\gamma_2a_{T-2}-\gamma_3a_{T-2}^2-\gamma_4b
+\end{align}
+\end{footnotesize}
+which I will simply call $\xi_{T-1}^{Max}$. 
+
+\subsection{Emax functions in T-1}
+
+\begin{align}
+	& \mathbbm{E}_{T-2}(V(\Omega_{T-1}^-))=\nonumber \\[0.2in]
+	& \mathbbm{E}_{T-2}\left[y_{T-1}(1+\alpha_1)+\alpha_0+\beta\text{Emax}_T^0|\xi_{T-1}<\xi_{T-1}^R\right]P(\xi_{T-1}<\xi_{T-1}^R)+\nonumber \\[0.2in]
+	& \mathbbm{E}_{T-2}\left[ y_{T-1}+w_{T-1}+\beta\text{Emax}_T^1|\xi_{T-1}^R<\xi_{T-1}<\xi_{T-1}^{Tax}\right]P(\xi_{T-1}^R<\xi_{T-1}<\xi_{T-1}^{Tax})\mathbbm{1}\{\xi_{T-1}^R<\xi_{T-1}^{Tax}\}+\nonumber \\[0.2in]
+	& \mathbbm{E}_{T-2}\left[ y_{T-1}+0.5w_{T-1}+15,000+\beta\text{Emax}_{T}^1|\xi_{T-1}>\xi^{Max}_{T-1}\right]P(\xi_{T-1}>\xi^{Max}_{T-1})
+\end{align}
+
+Now, analyzing term by term. Note that expectations over Emax functions are simply the Emax functions as there is no random component in this part. Emax functions use as arguments elements of the observed state space which are known from the past. This implies that:
+
+
+\begin{align}
+	 \mathbbm{E}_{T-2}\left[y_{T-1}(1+\alpha_1)+\alpha_0+\beta\text{Emax}_T^0|\xi_{T-1}<\xi_{T-1}^R\right]=y_{T-1}(1+\alpha_1)+\alpha_0+\beta\text{Emax}_T^0
+\end{align}
+
+\begin{align}
+	P(\xi_{T-1}<\xi_{T-1}^R)=\Phi\left(\frac{\xi_{T-1}^R}{\sigma_\xi}\right)
+\end{align}
+
+\begin{align}
+ 	& \mathbbm{E}_{T-2}\left[ y_{T-1}+w_{T-1}+\beta\text{Emax}T^1|\xi_{T-1}^R<\xi_{T-1}<\xi_{T-1}^{Tax}\right]=\nonumber \\[0.2in]
+	& y_{T-1}+\beta\text{Emax}_T^1+X_{T-1}\exp{\{\frac{\sigma_\xi^2}{2}\}}\left[ \frac{\Phi\left(\sigma_{\xi}-\frac{\xi_{T-1}^R(\Omega_{T-1}^-)}{\sigma_\xi}\right)-\Phi\left(\sigma_{\xi}-\frac{\xi_{T-1}^{Tax}(\Omega_{T-1}^-)}{\sigma_\xi}\right)}{\Phi\left(\frac{\xi_{T-1}^{Tax}(\Omega_{T-1}^-)}{\sigma_\xi}\right)-\Phi\left(\frac{\xi_{T-1}^{R}(\Omega_{T-1}^-)}{\sigma_\xi}\right)}\right]
+\end{align}
+
+\begin{align}
+	P(\xi_{T-1}^R<\xi_{T-1}<\xi_{T-1}^{Tax})=\Phi\left(\frac{\xi_{T-1}^{Tax}}{\sigma_\xi}\right)-\Phi\left(\frac{\xi_{T-1}^R}{\sigma_\xi}\right)
+\end{align}
+	
+
+\begin{align}
+ & \mathbbm{E}_{T-2}\left[ y_{T-1}-0.5w_{T-1}+15,000+\beta\text{Emax}_{T}^1|\xi_{T-1}>\xi^{Max}_{T-1}\right]=\nonumber \\[0.2in]
+& 	y_{T-1}+0.5X_{T-1}\exp{\{\frac{\sigma_\xi^2}{2}\}}\left[\frac{\Phi\left(\sigma_\xi-\frac{\xi_{T-1}^{Max}}{\sigma_\xi}\right)}{1-\Phi\left( \frac{\xi_{T-1}^{Max(\Omega_{T-1}^-)}}{\sigma_\xi} \right) } \right]+15,000+\beta\text{Emax}_T^1
+\end{align}
+
+\begin{align}
+	P(\xi_{T-1}>\xi^{Max}_{T-1})=1-\Phi\left(\frac{\xi_{T-1}^{Max}}{2} \right)
+\end{align}
+
+And then we have all the elements to estimate Emax function in $T-2$. For emac functions in previous periods we simply take these formulas back to the corresponding point up to the first period. 
+
+\subsection{Likelihood Function}
+
+Now, given that I have defined the cutoff rules for every period for every possible realization, we can now proceed to compute the likelihood function. Given a set of initial conditions $\Omega_1^-$ observed, and a set of outcomes in every period $O_{t,i}$ for $t=1..15$ and for $i=1..n$, as realizations are independent across individuals, we can write the likelihood function as:
+
+\begin{align}
+	\mathcal{L}(\Theta, \{y_i,P_i\}_{i=1}^N,_{t=1}^T;\{w_{i,t}\}_{i,t:P_{i,t}=1})=\prod_{i=1}^NP\left[ O_{1,i},O_{2,i},...,O_{15,i}|\Omega_{1,i}^-\right]
+\end{align}
+
+Which can be expressed as:
+
+\begin{align}
+	\mathcal{L}(\Theta, \{y_i,P_i\}_{i=1}^N,_{t=1}^T;\{w_{i,t}\}_{i,t:P_{i,t}=1})=\prod_{i=1}^NP[ O_{1,i}|\Omega_{i,1}^-], P[ O_{2,i}|\Omega_{i,2}^-]...P[ O_{T,i}|\Omega_{i,T}^-]
+\end{align}
+
+getting rid of the initial condition as I assume will be exogenous. This then will only affect the level of the likelihood. 
+
+Now, for a given individual $i$ and period $t$ the probability of observing outcome $O_{i,t}$ given the observed state space $\Omega_{i,t}$ when he works ($P_{i,t}=1$) is given by:
+
+
+\begin{align}\label{eq:probe}
+	& P[ O_{i,t}|\Omega_{i,t}^-]=\nonumber \\[0.2in]
+	& P[ P_{i,t}=1,w_{i,t}^0|\Omega_{i,t}^-]= \nonumber \\[0.2in]
+	& P[P_{i,t}=1,\theta_{i,t}+\xi_{i,t}|\Omega_{i,t}]= & \text{As observed wage is linear function of error terms} \nonumber \\[0.2in]
+	& P[P_{i,t}=1,u_{i,t}|\Omega_{i,t}^-]= & \text{Defining} u_{i,t}=\xi_{i,t}+\theta_{i,t} \nonumber \\[0.2in]
+	& P[P_{i,t}=1|u_{i,t},\Omega_{i,t}^-]f(u_{i,t}) =& f \text{ is the pdf of  } u_{i,t} =\nonumber \\[0.2in]
+	& \left(1-\Phi\left( \frac{\xi_{i,t}^R(\Omega_{i,t}^-)-\rho \frac{\sigma_\xi}{\sigma_u}u_{i,t})}{\sigma_\xi\sqrt{1-\rho^2}}\right)  \right)\frac{1}{\sigma_u}\phi\left(\frac{u_{i,t}}{\sigma_u} \right)
+\end{align}
+
+where $\rho=corr(u,\xi)=\frac{\sigma_\xi}{\sigma_u}$ and as I'm assuming $\theta$ and $\xi$ to be independent, then $\sigma_u=\sqrt{\sigma_\xi^2+\sigma_\theta^2}$. Using this into equation \ref{eq:probe}  we get:
+
+\begin{align}
+	 \left(1-\Phi\left( \frac{\xi_{i,t}^R(\Omega_{i,t}^-)- \frac{\sigma_\xi^2}{\sigma_\xi^2+\sigma_\theta^2}u_{i,t})}{\sigma_\xi\sqrt{1-\frac{\sigma_\xi^2}{\sigma_\xi^2+\sigma_\theta^2}}}\right)  \right)\frac{1}{\sqrt{\sigma_\xi^2+\sigma_\theta^2}}\phi\left(\frac{u_{i,t}}{\sqrt{\sigma_\xi^2+\sigma_\theta^2}} \right)
+\end{align}
+
+Note that $u_{i,t}$ is the difference between the predicted wage and the observed. Then:
+
+\begin{align}
+	u_{i,t}=w_{i,t}-\gamma_0-\gamma_1s_{i,t}-\gamma_2a_{i,t}-\gamma_3a_{i,t}^2-\gamma_4b
+\end{align}
+I will denote the non random component of wages simply as $WNR_{i,t}$. Now, finally, for the women who are not working, the outcome observed is simply that the shock is below the reservation shock for this individual. Then the contribution to the likelihood is:
+
+\begin{align}
+	\Phi\left(\frac{ \xi_{i,t}^R(\Omega_{i,t}^-)}{\sigma_\xi} \right)
+\end{align}
+
+
+And then, combining these two expressions, the likelihood function will be given by the following expression. In order to ease computer calculations, I compute the log-likelihood in Matlab rather than the likelihood function itself in order to get numbers that are not virtually zero for computational purposes. 
+
+
+\begin{footnotesize}
+\begin{align}
+	& \mathcal{L}(\Theta, \{y_i,P_i\}_{i=1}^N,_{t=1}^T;\{w_{i,t}\}_{i,t:P_{i,t}=1})=\nonumber \\[0.2in]
+	& \prod_{i=1}^N\prod_{t=1}^T\left[ \left(1-\Phi\left( \frac{\xi_{i,t}^R(\Omega_{i,t}^-)- \frac{\sigma_\xi^2}{\sigma_\xi^2+\sigma_\theta^2}(\ln(w_{i,t})-WNR_{i,t}))}{\sigma_\xi\sqrt{1-\frac{\sigma_\xi^2}{\sigma_\xi^2+\sigma_\theta^2}}}\right)  \right)\frac{1}{\sqrt{\sigma_\xi^2+\sigma_\theta^2}}\phi\left(\frac{(\ln(w_{i,t})-WNR_{i,t})}{\sqrt{\sigma_\xi^2+\sigma_\theta^2}} \right)\right]^{\mathbbm{1}\{P_{i,t}=1\}} \times \nonumber \\[0.2in]
+	& \left[\Phi\left(\frac{ \xi_{i,t}^R(\Omega_{i,t}^-)}{\sigma_\xi} \right)\right]^{\mathbbm{1}\{P_{i,t}=0\}} 
+\end{align}
+\end{footnotesize}
+
+
+The Matlab code to perform the maximum likelihood estimates is presented here:
+%check \lstinputlisting{likelihood.m}
+
+The file I use to maximize the likelihood function is the following one:
+%Check \lstinputlisting{maxlike.m}
+
+
+In order to get the estimates I minimize the negative of the likelihood function with the function $fminunc$, which is a gradient based optimization routine. After trying to fit the data with the model, I decide to begin the optimization problem with the following set of parameters:
+
+\begin{align}
+	\gamma_0=1 \nonumber \\ 
+	\gamma_1=0.01 \nonumber \\ 
+	\gamma_2=0 \nonumber \\ 
+	\gamma_3=0 \nonumber \\ 
+	\gamma_4=0 \nonumber \\ 
+		\alpha_0=2.5 \nonumber \\ 
+	\alpha_1=0.03\nonumber \\ 
+	\sigma_\xi=0.2 \nonumber \\ 
+	\sigma_\theta=0.3 
+\end{align}
+
+The parameters obtained after the optimization process are:
+
+\begin{align}
+	\gamma_0=0.7394 \nonumber \\ 
+	\gamma_1=0.0164 \nonumber \\ 
+	\gamma_2=0.0172 \nonumber \\ 
+	\gamma_3=0.0002 \nonumber \\ 
+	\gamma_4=-0.0154 \nonumber \\ 
+		\alpha_0=0.5398 \nonumber \\ 
+	\alpha_1=0.2953\nonumber \\ 
+	\sigma_\theta=0.1036 \nonumber \\ 
+	\sigma_\xi=0.3968 
+\end{align}
+
+The log-likelihood function evaluated at the estimated parameters takes the value of 10532.7. Below I report the screen of the optimization process when it is over. The iteration number, function count, value of the function, step size and first order optimality, respectively, are reported in Figure :
+
+%\begin{figure}[H]
+%  \caption{Optimization screen shot in Matlab}
+%  \centering
+%    \includegraphics[width=0.8\textwidth]{Optimizationscshot}
+%    \label{fig:optscshot}
+%\end{figure}
+
+
+
+\section{Simulations}
+
+In order to perform simulations I need to store the $Emax$ functions for every possible level of potential experience as for each individual, the optimal path in the discrete choice dynamic program can take any possible potential path. In order to do so I simply modify the likelihood function in order to allow storage of these functions for each possible individual, for each point in time, and for each level of potential experience (i.e. one additional dimension). The file used to perform the simulations is presented here:
+
+%Check \lstinputlisting{simulations.m}
+
+
+
+% Table generated by Excel2LaTeX from sheet 'Hoja1'
+\begin{table}[H]
+  \centering
+  \caption{Working periods by Schooling $S$}
+    \begin{tabular}{|c||c|c|}
+    \hline
+    \multirow{2}{*}{\textbf{Schooling level}} & \multicolumn{2}{c}{\textbf{Number of periods working}} \\
+   
+          & \textbf{Simulated} & \textbf{Data} \\
+          \hline
+    \textbf{$S<12$} & 10.82  & 10.5 \\
+    \textbf{$S=12$} & 10.81  & 10.86 \\
+    \textbf{$S \in [13, 15]$} & 10.76  & 10.97 \\
+    \textbf{$S \geq16$} & 10.82  & 11.38 \\
+    Overall population & 10.80  & 11.04 \\
+    \hline
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+
+% Table generated by Excel2LaTeX from sheet 'Hoja1'
+\begin{table}[H]
+  \centering
+  \caption{Fraction of women working by age}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Age} & \textbf{Simulated } & \textbf{Data} \\
+    \hline
+    1     & 0.72  & 0.73 \\
+    2     & 0.72  & 0.71 \\
+    3     & 0.72  & 0.70 \\
+    4     & 0.72  & 0.73 \\
+    5     & 0.72  & 0.74 \\
+    6     & 0.73  & 0.72 \\
+    7     & 0.73  & 0.74 \\
+    8     & 0.72  & 0.73 \\
+    9     & 0.72  & 0.76 \\
+    10    & 0.71  & 0.76 \\
+    11    & 0.72  & 0.74 \\
+    12    & 0.72  & 0.75 \\
+    13    & 0.72  & 0.73 \\
+    14    & 0.72  & 0.76 \\
+    15    & 0.71  & 0.73 \\
+    \hline
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+
+% Table generated by Excel2LaTeX from sheet 'Hoja1'
+\begin{table}[H]
+  \centering
+  \caption{Fraction of women working by work experience}
+    \begin{tabular}{|c|c|c|}
+\hline
+    \textbf{Work experience} & \textbf{Simulated} & \textbf{Data} \\
+    \hline
+    $<10$   & 0.72  & 0.68 \\
+    $11-20$ & 0.72  & 0.72 \\
+    $\geq 21$   & 0.72  & 0.76 \\
+    \hline
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+
+
+\begin{table}[H]
+  \centering
+  \caption{Wages and years of schooling}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Schooling} & \textbf{Simulated} & \textbf{Data} \\
+    \hline
+    $<12$   & 4.04  & 4.19 \\
+    12    & 4.25  & 4.27 \\
+    13 - 15 & 4.37  & 4.27 \\
+    $\geq 16$   & 4.58  & 4.28 \\
+    \hline
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+
+% Table generated by Excel2LaTeX from sheet 'Hoja1'
+\begin{table}[H]
+  \centering
+  \caption{Wages and age}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{Age} & \textbf{Simulated} & \textbf{Data} \\
+    \hline
+    1     & 4.07  & 3.97 \\
+    2     & 4.14  & 4.04 \\
+    3     & 4.15  & 4.07 \\
+    4     & 4.19  & 4.16 \\
+    5     & 4.28  & 4.18 \\
+    6     & 4.29  & 4.20 \\
+    7     & 4.24  & 4.26 \\
+    8     & 4.33  & 4.28 \\
+    9     & 4.37  & 4.23 \\
+    10    & 4.26  & 4.33 \\
+    11    & 4.47  & 4.40 \\
+    12    & 4.52  & 4.34 \\
+    13    & 4.59  & 4.53 \\
+    14    & 4.58  & 4.47 \\
+    15    & 4.74  & 4.53 \\
+    \hline
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+\section{Counterfactual Analysis}
+
+\subsection{Tax reform from the initial period}
+
+In this case, other than the threshold for taxing and the actual marginal tax rate, nothing changes. We will have the following decision rule in the last period:
+1. If the individual doesn't work we have to options. In this case, we should have $U_T^1<U_T^0$ and we can have two options, to be called. First, if the reservation wage is below the taxing regions:
+
+\textbf{Option 1:} $y_T(1+\alpha_1)+\alpha_0<20,000+y_T\rightarrow y_T\alpha_1+\alpha_0<20,000$
+
+In this case, the reservation wage $w_T^R$ is defined the wage rate at which the individual is indifferent between working (without tax) and not working:
+
+\begin{align}
+	y_T(1+\alpha_1)+\alpha_0=y_T+w_T^R
+\end{align}
+
+Which implies that $\xi_T^R=\ln(y_T\alpha_1+\alpha_0)-\gamma_0-\gamma_1s_T-\gamma_2a_T-\gamma_3a_T^2-\gamma_4b$. Now, whenever the reservation wage is so high that it lies in the taxing region:
+
+\textbf{Option 2:} $y_T(1+\alpha_1)+\alpha_0>20,000+y_T\rightarrow y_T\alpha_1+\alpha_0>20,000$
+
+
+\begin{align}
+	y_T(1+\alpha_1)+\alpha_0=y_T+w_T-0.7(w_T-20,000)
+\end{align}
+
+implying a reservation shock level $\xi_T^R$ such that:
+
+\begin{align}
+	\xi_T^R=\ln\left( \frac{10}{3}(\alpha_1y_T+\alpha_0-14,000)\right)-\gamma_0-\gamma_1s_T-\gamma_2a_T-\gamma_3a_T^2-\gamma_4b
+\end{align}
+
+and then, combining both cases we can define the reservation shock as:
+
+
+\begin{align}
+	\xi_T^R=\begin{cases}
+		\ln(\alpha_1y_T+\alpha_0)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b  \text{;  if  } y_T\alpha_1+\alpha_0<20,000 \\
+		\ln\left( \frac{10}{3}(\alpha_1y_T+\alpha_0-14,000)\right)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b \text{;   otherwise}
+	\end{cases}
+\end{align}
+
+The Emax in the last period will be given by:
+
+
+\begin{align}
+	& \mathbb{E}_{T-1}\left(V(\Omega_T^-) \right)=\mathbb{E}_{T-1}\left[U_T^{0}| \xi<\xi_T^R(\Omega_T^-) \right]P(\xi_T<\xi_T^R(\Omega_T^-) )+\nonumber \\[0.2in]
+	& \mathbb{E}_{T-1}\left[U_T^{1,N}| \xi_T^R(\Omega_T^-\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \right]P(\xi_T^R(\Omega_T^-)\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \mathbbm{1}\{\xi_T^R(\Omega_T^-)\leq\xi_T^{Tax}(\Omega_T^-)\}+\nonumber \\[0.2in]
+	& \mathbb{E}_{T-1}\left[U_T^{1,T}| \xi_T>\xi_T^{Max}(\Omega_T^-) \right]P(\xi_T>\xi_T^{Max}(\Omega_T^-))
+\end{align}
+
+Which is exactly the same expression as in the previous tax scheme. However, in this case the reservation shock $\xi_T^R$ is different and also the tax shock $\xi_T^{Tax}$ which will be defined as:
+
+\begin{align}\label{eq:xitax}
+	\xi_T^{Tax}(\Omega_T^-)=\ln(20,000)-\gamma_0-\gamma_1s_T-\gamma_2a_{T}-\gamma_3a_{T}^2-\gamma_4b
+\end{align}
+
+Given these definitions of reservation shock and taxed shock, the Emax function in the last period remains unchanged:
+
+\begin{align}
+	& \mathbb{E}_{T-1}\left(V(\Omega_T^-) \right)=\mathbb{E}_{T-1}\left[U_T^{0}| \xi<\xi_T^R(\Omega_T^-) \right]P(\xi_T<\xi_T^R(\Omega_T^-) )+\nonumber \\[0.2in]
+	& \mathbb{E}_{T-1}\left[U_T^{1,N}| \xi_T^R(\Omega_T^-\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \right]P(\xi_T^R(\Omega_T^-)\leq \xi_T\leq \xi_T^{Tax}(\Omega_t^-)) \mathbbm{1}\{\xi_T^R(\Omega_T^-)\leq\xi_T^{Tax}(\Omega_T^-)\}+\nonumber \\[0.2in]
+	& \mathbb{E}_{T-1}\left[U_T^{1,T}| \xi_T>\xi_T^{Max}(\Omega_T^-) \right]P(\xi_T>\xi_T^{Max}(\Omega_T^-))
+\end{align}
+
+However, the last term will change as the utility of working when being taxed is going to be different:
+
+
+\begin{align}
+ 	& \mathbb{E}_{T-1}\left[U_T^{1,T}| \xi_T>\xi_T^{Max}(\Omega_T^-) \right]=\nonumber \\[0.2in]
+	& y_T+0.3X_T\exp\{\frac{\sigma_\xi^2}{2}\}\left[\frac{\Phi\left(\sigma_\xi-\frac{\xi_T^{Max}}{\sigma_\xi}\right)}{1-\Phi\left( \frac{\xi_T^{Max(\Omega_T^-)}}{\sigma_\xi} \right) } \right]+14,000
+\end{align}
+
+For the previous periods (before $T$) the thresholds will simply be adjusted to include the discounted difference in $Emax$ functions. For the second counterfactual, the way to program is simply use the original thresholds for the first seven periods and the new one for the remaining. The last one is slightly different. When individuals decide wether or not to work they take into account the dynamic effect of working on their earnings. However, in this case they will take the expectations and form the $Emax$ functions assuming that the tax scheme will last forever. However, when at the 8th period they will realize the change and will adjust their expectations in order to take the decisions with the right $Emax$  (static expectations). 
+
+% Table generated by Excel2LaTeX from sheet 'Hoja1'
+\begin{table}[H]
+  \centering
+  \caption{Employment profile by age}
+    \begin{tabular}{cccc}
+    \textbf{Age} & \textbf{Counterfactual 1} & \textbf{Counterfactual 2} & \textbf{Counterfactual 3} \\
+    1     & 0.47  & 0.55  & 0.72 \\
+    2     & 0.48  & 0.55  & 0.72 \\
+    3     & 0.49  & 0.55  & 0.72 \\
+    4     & 0.48  & 0.55  & 0.72 \\
+    5     & 0.49  & 0.55  & 0.72 \\
+    6     & 0.48  & 0.55  & 0.73 \\
+    7     & 0.47  & 0.55  & 0.73 \\
+    8     & 0.47  & 0.55  & 0.48 \\
+    9     & 0.50  & 0.55  & 0.48 \\
+    10    & 0.48  & 0.55  & 0.52 \\
+    11    & 0.45  & 0.55  & 0.53 \\
+    12    & 0.46  & 0.55  & 0.48 \\
+    13    & 0.51  & 0.55  & 0.49 \\
+    14    & 0.50  & 0.55  & 0.50 \\
+    15    & 0.49  & 0.54  & 0.31 \\
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+
+% Table generated by Excel2LaTeX from sheet 'Hoja1'
+\begin{table}[htbp]
+  \centering
+  \caption{Wage and age profile}
+    \begin{tabular}{cccc}
+    \textbf{Age} & \textbf{Counterfactual 1} & \textbf{Counterfactual 2} & \textbf{Counterfactual 3} \\
+    1     & 4.52  & 4.34  & 4.07 \\
+    2     & 4.52  & 4.28  & 4.14 \\
+    3     & 4.53  & 4.26  & 4.15 \\
+    4     & 4.53  & 4.23  & 4.19 \\
+    5     & 4.54  & 4.19  & 4.28 \\
+    6     & 4.52  & 4.13  & 4.29 \\
+    7     & 4.53  & 4.10  & 4.24 \\
+    8     & 4.51  & 4.51  & 4.51 \\
+    9     & 4.53  & 4.53  & 4.53 \\
+    10    & 4.53  & 4.54  & 4.53 \\
+    11    & 4.53  & 4.54  & 4.54 \\
+    12    & 4.54  & 4.54  & 4.54 \\
+    13    & 4.54  & 4.54  & 4.53 \\
+    14    & 4.53  & 4.53  & 4.53 \\
+    15    & 4.53  & 5.29  & 5.27 \\
+    \end{tabular}%
+  \label{tab:addlabel}%
+\end{table}%
+
+Now, evidently in the fIrst counterfactual reduces significantly the participation rate of women as now they benefits from working are reduced. This also implies that accepted wages should be higher in order to motivate women for working. The second counterfactual is in between the simulated data and the first counterfactual as the effects will be less dramatic: the tax reform will only take place beginning in the 8th period and thus women can still have the same benefits as in previous cases. In the third counterfactual, the first periods are the same as the simulated data: women are not aware of the tax reform coming in the 8th period and take the decisions just as in the initial case. This makes them also accept lower wages. However, things change once the tax reform begins: women are discouraged from working due to more taxation and thus in order to work the compensation should be higher, which can be seen in the fact that accepted wages increase from period 8 and beyond.
+
+
+
+\nocite{prescott04}
+\bibliographystyle{apacite}
+\bibliography{econbib}
+
+\end{document}
+
+
+%Double truncation
+TREXP = @(xiR,xiT,sxi)((normcdf(sxi-xiR/sxi)-normcdf(sxi-xiT/sxi))/(normcdf(xiT/sxi)-normcdf(xiR/sxi)));
+
+
+%Single truncation
+TREXP2=@(ximax,sxi)(normcdf(sxi-ximax/sxi)/(1-normcdf(ximax/sxi)));
+
+%Non random component of wages:
+WNRT =@(S,A,B) (gamma0+gamma1*S+gamma2*A-gamma3*A^2-gamma4*B);
+
+lik=0;
+%% Begin with the loop:
+
+for i=1:1000
+    for t=15:-1:1
+            ii=15*(i-1)+t;
+            %Actual realized experience
+            EXP=A(ii);
+            %Non random component of wages as function of experience
+            WNRT =@(A) ((gamma0+gamma1*S(ii)+gamma2*A-gamma3*A^2-gamma4*B(ii)));
+            if t==15
+                %Experience at the begining of time:
+                b=ii-14; %Time indicator for beginning
+                
+                %Initial experience:
+                AI=A(b);
+                
+                %I loop over all possible experience levels
+                for uu=1:1:15; %This should be a 14 as experience of 15 is not important for end period
+                     j=AI+uu-1; %Index of experience
+                     %% Shocks
+                     %  Reservation shock in last period:
+                     xire=log(max(alpha1*Y(ii)+alpha0,1e-270))*(Y(ii)*alpha1+alpha0<3)+log(max(2*(alpha1*Y(ii)+alpha0-1.5),1e-270))*((Y(ii)*alpha1+alpha0>=3))-WNRT(j);
+                     
+
+                    %  Shock tax in last period
+                    xitax=log(3)-WNRT(j);
+                    
+                    %  Maximum shock
+                    ximax=max(xire,xitax);
+                    
+                    %I should only store the true values
+                    if A(ii)==j
+                        XIMAT(1,i,t)=xire;
+                        XIMAT(2,i,t)=xitax;
+                        XIMAT(3,i,t)=ximax;
+                    end
+                    
+
+                    %% Emax functions
+                    %1.  From not working:
+                    UNWT=(Y(ii)*(1+alpha1)+alpha0)*normcdf(xire/sxi);
+
+                    %2. From working and not being taxed:
+                    if xire<xitax
+                        UWNT=(Y(ii)+exp(WNRT(j))*exp(sxi^2/2)*TREXP(xire,xitax,sxi))*(normcdf(xitax/sxi)-normcdf(xire/sxi));
+                    else
+                        UWNT=0;
+                    end;
+
+                    %3. From working and being taxed:
+                    UWT=(Y(ii)+1.5+0.5*exp(WNRT(j)+(sxi^2)/2)*min(TREXP2(ximax,sxi),1.0e+20))*(1-normcdf(ximax/sxi));
+                    EMAXT(t,uu)=UWT+UWNT+UNWT;
+                end;
+            else  
+                %Now for periods below 15:
+                %Getting experience in initial time:
+                b=ii-(t-1); %Getting initial observation of individual i
+                AI=A(b); %Getting initial experience
+                for uu=1:1:t
+                    j=AI+uu-1;
+                    
+                    %% Shocks cutoff levels:
+                    
+                    %1. Reservation wage shock
+                    
+                    %1.1 If below taxing region
+                    if alpha1*Y(ii)+alpha0+0.95*(EMAXT(t+1,uu)-EMAXT(t+1,uu+1))<3
+                        xire=log(max(alpha1*Y(ii)+alpha0+0.95*(EMAXT(t+1,uu)-EMAXT(t+1,uu+1)),1e-27))-WNRT(j);
+                    
+                    %1.2 If  above taxing region
+                    else 
+                        xire=log(max(2*(alpha1*Y(ii)+alpha0+0.95*(EMAXT(t+1,uu)-EMAXT(t+1,uu+1))-1.5),1e-27))-WNRT(j);
+                    end
+                    
+
+                    %2. Taxing wage shock
+                    xitax=log(3)-WNRT(j);
+                    
+                    ximax=max(xire,xitax);
+                    %I should only store the true values
+                    if A(ii)==j
+                        XIMAT(1,i,t)=xire;
+                        XIMAT(2,i,t)=xitax;
+                        XIMAT(3,i,t)=ximax;
+                    end
+                    
+                    %% Emax functions
+                    
+                    %1. From not working
+                    UNWT=(Y(ii)*(1+alpha1)+alpha0+0.95*EMAXT(t+1,uu))*normcdf(xire/sxi);
+                    
+                    %2. From working and not being taxed:
+                    if xire<xitax
+                        UWNT=(Y(ii)+exp(WNRT(j)+sxi^2/2)*TREXP(xire,xitax,sxi)+0.95*EMAXT(t+1,uu+1))*(normcdf(xitax/sxi)-normcdf(xire/sxi));
+                    else
+                        UWNT=0;
+                    end;
+                    
+                    %3. From working and being taxed:
+                    UWT=(Y(ii)+1.5+0.5*exp(WNRT(j)+sxi^2/2)*TREXP2(ximax,sxi)+0.95*EMAXT(t+1,uu+1))*(1-normcdf(ximax/sxi));
+                    EMAXT(t,uu)=UWT+UWNT+UNWT;
+                end
+            end 
+            
+            
+         %After estimating all the likelihood and cutoff rules, I proceed
+         %with getting the likelihood function.
+         
+         
+         %I estimated cutoff rules for different potential levels of 
+         %experience but I have to call the actual real ones:
+         xire=XIMAT(1,i,t);
+
+         
+         %Likelihood contribution for individual i time t:
+         
+         %Term going inside of cdf
+         if L(ii)==1
+            incdf=(xire-sxi^2/(sxi^2+stheta^2)*(log(W(ii))-WNRT(EXP)))/(sxi*sqrt(1-(sxi^2/(sxi^2+stheta^2))));
+         
+         %Term going inside of pdf:
+            inpdf=(log(W(ii))-WNRT(EXP))/(sqrt(sxi^2+stheta^2));
+         
+         
+         %Adding contribution to the likelihood if person works
+         lik=lik+(L(ii)==1)*log(max((1-normcdf(incdf))*normpdf(inpdf)/(sqrt(sxi^2+stheta^2)),1e-100));
+         end
+         %Adding contribution to the likelihood if person doesn't work:
+         lik=lik+(L(ii)==0)*log(max(normcdf(xire/sxi),1e-100));
+         
+         %Delete this part, only to veryfy when the loop gets NaN:
+         
+    end
+end
+
+l=-lik;
+end
+
